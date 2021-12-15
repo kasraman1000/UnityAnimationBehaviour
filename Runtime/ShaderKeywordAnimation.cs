@@ -235,6 +235,7 @@ public class ShaderKeywordAnimation : AnimationBehaviour, IMaterialModifier {
 		}
 	}
 	
+	[ContextMenu("Load material")] void loadMaterial() { _originalMaterial = null; _ = originalMaterial; }
 	[ContextMenu("Clear material")] void clearMaterial() => instantiatedMaterial = null;
 	[ContextMenu("Make material")] void makeMaterial() => instantiatedMaterial = originalMaterial;
 	

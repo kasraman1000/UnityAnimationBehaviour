@@ -82,10 +82,10 @@ public class UIPositionAnimation : AnimationBehaviour {
 		}
 		
 		if (animateAnchor) {
-			anchorMinFrom = (!playBack && beginFromCurrent ? rect.anchorMin : anchorMinFrom);
-			anchorMinTo = (playBack && beginFromCurrent ? rect.anchorMin : anchorMinTo);
-			anchorMaxFrom = (!playBack && beginFromCurrent ? rect.anchorMax : anchorMaxFrom);
-			anchorMaxTo = (playBack && beginFromCurrent ? rect.anchorMax : anchorMaxTo);
+			anchorMinFrom = (!playBack && beginFromCurrent ? rect.anchorMin : fromAnchorMin);
+			anchorMinTo = (playBack && beginFromCurrent ? rect.anchorMin : toAnchorMin);
+			anchorMaxFrom = (!playBack && beginFromCurrent ? rect.anchorMax : fromAnchorMax);
+			anchorMaxTo = (playBack && beginFromCurrent ? rect.anchorMax : toAnchorMax);
 		}
 	}
 	
