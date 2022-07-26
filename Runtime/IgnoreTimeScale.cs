@@ -11,15 +11,15 @@ public static class GameObjectIgnoreTimeScaleExtension {
 			components[i].setIgnoreTimeScale(ignore);
 		}
 		
-		var particleSystems = gameObject.GetComponentsInChildren<ParticleSystem>(includeInactive: true);
-		for (var i = 0; i < particleSystems.Length; i++) {
-			var settings = particleSystems[i].main;
-			settings.useUnscaledTime = ignore;
-		}
+		// var particleSystems = gameObject.GetComponentsInChildren<ParticleSystem>(includeInactive: true);
+		// for (var i = 0; i < particleSystems.Length; i++) {
+		// 	var settings = particleSystems[i].main;
+		// 	settings.useUnscaledTime = ignore;
+		// }
 		
-		var animators = gameObject.GetComponentsInChildren<Animator>(includeInactive: true);
-		for (var i = 0; i < animators.Length; i++) {
-			animators[i].updateMode = (ignore ? AnimatorUpdateMode.UnscaledTime : AnimatorUpdateMode.Normal);
-		}
+		// var animators = gameObject.GetComponentsInChildren<Animator>(includeInactive: true);
+		// for (var i = 0; i < animators.Length; i++) {
+		// 	animators[i].updateMode = (ignore ? AnimatorUpdateMode.UnscaledTime : AnimatorUpdateMode.Normal);
+		// }
 	}
 }
