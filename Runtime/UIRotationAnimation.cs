@@ -46,8 +46,11 @@ public class UIRotationAnimationEditor : AnimationBehaviourEditor {
 public class UIRotationAnimation : AnimationBehaviour {
 	[System.Serializable] public enum Axis { x, y, z };
 	public Axis axis = Axis.z;
-	
 	public Space space = Space.World;
+	
+	[System.Serializable] public enum Mode { closest, direct }
+	public Mode mode;
+	
 	public float fromAngle = 0;
 	public float toAngle = 180;
 	
@@ -55,7 +58,7 @@ public class UIRotationAnimation : AnimationBehaviour {
 	
 	Transform _transform;
 	Transform cachedTransform => _transform != null ? _transform : _transform = transform;
-    
+	
 	public Quaternion currentRotation {
 		get => space switch { Space.Self => cachedTransform.localRotation, Space.World => cachedTransform.rotation, _ => throw new System.Exception() };
 		set {
@@ -82,7 +85,14 @@ public class UIRotationAnimation : AnimationBehaviour {
 	}
 	
 	protected override void updateAnimation(float progress, AnimationBehaviour.State state) {
-		currentAngle = Mathf.LerpAngle(fromAngle, toAngle, progress);
+		switch (mode) {
+			case Mode.closest:
+				currentAngle = Mathf.LerpAngle(fromAngle, toAngle, progress);
+				break;
+			case Mode.direct:
+				currentAngle = Mathf.Lerp(fromAngle, toAngle, progress);
+				break;
+		}
 	}
 	
 	Vector3 singleAxis(Vector3 euler) => axis switch {
